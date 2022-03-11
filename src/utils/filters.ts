@@ -9,10 +9,10 @@ function addDays(date, days) {
 
 function filterPostByWeekNumber(posts) {
     let startDate = config.filterMonths.find(x => x.name === 'September').startDate;
-    let endDate = config.filterMonths.find(x => x.name === 'February').endDate;
+    let endDate = config.filterMonths.find(x => x.name === 'March').endDate;
     let filterByWeek = [];
     let weekNumber = 1;
-    while(startDate < endDate) {
+    while(startDate <= endDate) {
         let weekEndDate = addDays(startDate, 7);
         let weekData:IStatsPerWeek = {
             week: weekNumber,

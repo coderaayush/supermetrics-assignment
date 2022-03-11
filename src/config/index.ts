@@ -6,8 +6,13 @@ const config = {
     email: process.env.USER_EMAIL,
     name: process.env.USER_NAME,
     posts_endpoint_url: process.env.POSTS_ENDPOINT,
-    max_pages: 10,
+    max_pages: process.env.NODE_ENV === 'test' ? parseInt(process.env.MAX_PAGES_TEST) : parseInt(process.env.MAX_PAGES),
     filterMonths: [{
+        name: 'March',
+        year: 2022,
+        startDate: new Date('2022-03-01'),
+        endDate: new Date('2022-03-31')
+    },{
         name: 'February',
         year: 2022,
         startDate: new Date('2022-02-01'),

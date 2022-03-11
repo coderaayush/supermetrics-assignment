@@ -8,7 +8,7 @@ export async function getStats(req, res) {
     try {
         //reset posts data for new call
         postsData.length = 0;
-        
+
         //check if token exists
         if (registrationToken.sl_token && registrationToken.sl_token.length > 0) {
             await fetchAndUpdatePostsData();
@@ -16,14 +16,15 @@ export async function getStats(req, res) {
             await setRegistrationToken();
             await fetchAndUpdatePostsData();
         }
-        let stats = populateStatsForPostsData();
+        
+        const stats = populateStatsForPostsData();
         res.send({msg: 'Status populated successfully', data: stats});
     } catch (e) {
         console.log(e);
         if (e.response?.data?.error?.message === 'Invalid SL Token') {
             await setRegistrationToken();
             await fetchAndUpdatePostsData();
-            let stats = populateStatsForPostsData();
+            const stats = populateStatsForPostsData();
             return res.send({msg: 'Status populated successfully', data: stats});
         }
         

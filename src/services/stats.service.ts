@@ -40,15 +40,17 @@ export function populateStatsForPostsData() {
             uniqueUsersData[stat.from_id] = postCountByUser;
         }
 
-        let numberOfUsersThisMonth = Object.keys(uniqueUsersData).length;
-        let totalPostsThisMonth = Object.values(uniqueUsersData).reduce((a, b) => a + b);
-        let statOutputThisMonth:IStatsPerMonth = {
-            month: monthStat.name,
-            average_character_length_of_posts: parseFloat((averageCount/monthStat.data.length).toFixed(1)),
-            longest_post_by_character: longestPost,
-            average_number_of_posts_per_user_this_month: parseFloat((totalPostsThisMonth/numberOfUsersThisMonth).toFixed(1))     
-        };
-        statsPerMonth.push(statOutputThisMonth);
+        if (Object.keys(uniqueUsersData).length > 0) {
+            let numberOfUsersThisMonth = Object.keys(uniqueUsersData).length;
+            let totalPostsThisMonth = Object.values(uniqueUsersData).reduce((a, b) => a + b);
+            let statOutputThisMonth:IStatsPerMonth = {
+                month: monthStat.name,
+                average_character_length_of_posts: parseFloat((averageCount/monthStat.data.length).toFixed(1)),
+                longest_post_by_character: longestPost,
+                average_number_of_posts_per_user_this_month: parseFloat((totalPostsThisMonth/numberOfUsersThisMonth).toFixed(1))     
+            };
+            statsPerMonth.push(statOutputThisMonth);
+        }
     }
 
     const outputStats:IStats = {

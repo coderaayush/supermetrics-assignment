@@ -6,14 +6,41 @@
   "scripts": {
     "build": "tsc -p .",
     "start": "ts-node src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --forceExit"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testEnvironment": "node",
+    "coverageReporters": ["json", "html"],
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ]
   },
   "author": "Aayush Mamgain",
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.1",
+    "@types/nock": "^11.1.0",
+    "@types/supertest": "^2.0.11",
     "dotenv": "^16.0.0",
+    "jest": "^27.5.1",
+    "nock": "^13.2.4",
+    "supertest": "^6.2.2",
+    "ts-jest": "^27.1.3",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.13.0",
     "typescript": "^4.6.2"
