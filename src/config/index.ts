@@ -11,7 +11,7 @@ const config = {
         name: 'March',
         year: 2022,
         startDate: new Date('2022-03-01'),
-        endDate: new Date('2022-03-31')
+        endDate: new Date()
     },{
         name: 'February',
         year: 2022,
